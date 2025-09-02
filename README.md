@@ -34,6 +34,10 @@ A modern Arabic ecommerce store showcasing products with a shopping cart, simula
 ![Homepage](./screenshots/home-1.png)
 ![Homepage](./screenshots/home-2.png)
 
+### Category Page
+
+![Category Page](./screenshots/category-1.png)
+
 ### Product Page
 
 ![Product Page](./screenshots/product-details-1.png)
@@ -42,9 +46,9 @@ A modern Arabic ecommerce store showcasing products with a shopping cart, simula
 
 ![Cart Drawer](./screenshots/cart-1.png)
 
-### Category Page
+### Checkout
 
-![Category Page](./screenshots/category-1.png)
+![Checkout](./screenshots/checkout-1.png)
 
 ---
 
