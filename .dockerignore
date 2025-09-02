@@ -1,0 +1,29 @@
+# Node & Composer dependencies (they'll be installed inside the container)
+node_modules
+vendor
+
+# Environment files
+.env
+.env.local
+.env.*.backup
+
+# Logs and caches
+storage/logs
+storage/framework/cache
+storage/framework/sessions
+storage/framework/views
+bootstrap/cache/*.php
+
+# OS / Editor files
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+
+# Git files
+.git
+.gitignore
+
+# NPM / Yarn lock (optional if already copied separately)
+npm-debug.log
+yarn-error.log
