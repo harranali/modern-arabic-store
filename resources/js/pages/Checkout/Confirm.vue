@@ -1,5 +1,4 @@
 <script setup>
-import { useRoute, usePage } from '@inertiajs/vue3';
 import { CheckCircle } from 'lucide-vue-next';
 
 const page = usePage();
