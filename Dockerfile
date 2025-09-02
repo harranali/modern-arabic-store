@@ -16,11 +16,22 @@ RUN apt-get update && apt-get install -y \
 # Set working directory
 WORKDIR /var/www/html
 
+# Install Composer
+RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
+
+# Copy composer files first to leverage Docker cache
+COPY composer.json composer.lock ./
+
+# Install PHP dependencies
+RUN composer install --optimize-autoloader --no-scripts
+RUN composer run-script post-autoload-dump
+
 # Copy all app files
 COPY . .
 
-# Install Composer
-RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
+# Install Node dependencies and build frontend
+RUN npm install
+RUN npm run build
 
 # set script permission
 RUN chmod +x start.sh

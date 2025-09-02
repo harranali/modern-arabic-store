@@ -8,12 +8,6 @@ if [ ! -f .env ]; then
     cp .env.example .env
 fi
 
-# Install PHP dependencies first
-composer install --optimize-autoloader --no-scripts
-
-# Run post-autoload scripts
-composer run-script post-autoload-dump
-
 # Generate APP_KEY
 php artisan key:generate --ansi
 
@@ -21,12 +15,11 @@ php artisan key:generate --ansi
 php artisan migrate --force
 php artisan db:seed --force
 
-# Install Node dependencies and build frontend
-npm install
-npm run build
-
 # Set permissions
 chown -R www-data:www-data storage bootstrap/cache
 
-echo "Starting PHP-FPM..."
-php-fpm
+# Determine port (Render sets $PORT, default to 8000 locally)
+PORT=${PORT:-8000}
+
+echo "Starting Laravel server on port $PORT..."
+php artisan serve --host=0.0.0.0 --port=$PORT
