@@ -4,9 +4,7 @@ set -e
 echo "Setting up Laravel environment..."
 
 # Copy example env if .env doesn't exist
-if [ ! -f .env ]; then
-    cp .env.example .env
-fi
+cp .env.example .env
 
 # Generate APP_KEY
 php artisan key:generate --ansi
