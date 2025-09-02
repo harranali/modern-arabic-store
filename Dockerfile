@@ -33,6 +33,9 @@ RUN composer run-script post-autoload-dump
 
 # Install Node dependencies and build frontend
 RUN npm install
+
+RUN php artisan wayfinder:generate --with-form
+
 RUN npm run build
 
 # set script permission
