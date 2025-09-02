@@ -28,6 +28,12 @@ RUN composer install --optimize-autoloader --no-scripts
 # Copy all app files
 COPY . .
 
+# In Dockerfile, after copying app files
+RUN mkdir -p bootstrap/cache
+RUN mkdir -p storage/framework/views
+RUN chmod -R 775 bootstrap/cache storage
+RUN chown -R www-data:www-data bootstrap/cache storage
+
 # run post scrits
 RUN composer run-script post-autoload-dump
 
