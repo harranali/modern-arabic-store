@@ -17,9 +17,6 @@ chmod 664 database/database.sqlite
 chown -R www-data:www-data storage bootstrap/cache
 chmod -R 775 storage bootstrap/cache
 
-# list env files
-ls -la .env*
-
 # Generate APP_KEY if missing
 if ! grep -q 'APP_KEY=' .env || [ -z "$(grep 'APP_KEY=' .env | cut -d'=' -f2)" ]; then
     php artisan key:generate --ansi
@@ -31,10 +28,6 @@ php artisan db:seed --force
 
 # Final ownership (just in case)
 chown -R www-data:www-data storage bootstrap/cache
-
-# Install Node dependencies and build frontend
-npm install
-npm run build
 
 # Determine port (Render sets $PORT, default to 8000 locally)
 PORT=${PORT:-8000}

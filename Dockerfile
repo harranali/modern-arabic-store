@@ -31,6 +31,10 @@ COPY . .
 # run post scrits
 RUN composer run-script post-autoload-dump
 
+# Install Node dependencies and build frontend
+RUN npm install
+RUN npm run build
+
 # set script permission
 RUN chmod +x start.sh
 
