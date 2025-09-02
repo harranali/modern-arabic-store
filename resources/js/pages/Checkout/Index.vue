@@ -168,7 +168,7 @@ const brandColors = {
                                 </div>
 
                                 <span class="font-semibold text-gray-800">
-                                    {{ method === 'credit' ? 'بطاقة ائتمان' : method.charAt(0).toUpperCase() +
+                                    {{ method === 'creditcard' ? 'بطاقة ائتمان' : method.charAt(0).toUpperCase() +
                                         method.slice(1) + ' Pay' }}
                                 </span>
                             </label>
