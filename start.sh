@@ -8,14 +8,14 @@ if [ ! -f .env ]; then
     cp .env.example .env
 fi
 
-# Generate APP_KEY if not already set
-php artisan key:generate --ansi
+# Install PHP dependencies first
+composer install --optimize-autoloader --no-scripts
 
-# Install PHP dependencies (including dev for seeding)
-composer install --optimize-autoloader
-
-# composer run scripts
+# Run post-autoload scripts
 composer run-script post-autoload-dump
+
+# Generate APP_KEY
+php artisan key:generate --ansi
 
 # Run migrations and seed database
 php artisan migrate --force
