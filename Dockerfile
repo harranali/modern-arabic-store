@@ -26,7 +26,7 @@ RUN cp .env.example .env
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 
 # Install PHP dependencies (skip scripts initially to avoid artisan errors)
-RUN composer install --no-dev --optimize-autoloader --no-scripts
+RUN composer install --optimize-autoloader --no-scripts
 
 # Run post-autoload scripts now that artisan exists
 RUN composer run-script post-autoload-dump
