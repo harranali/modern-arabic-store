@@ -8,6 +8,11 @@ if [ ! -f .env ]; then
     cp .env.example .env
 fi
 
+# add sqlite
+touch database/database.sqlite
+chown www-data:www-data database/database.sqlite
+chmod 664 database/database.sqlite
+
 # Set permissions early
 chown -R www-data:www-data storage bootstrap/cache
 chmod -R 775 storage bootstrap/cache
