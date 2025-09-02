@@ -1,7 +1,7 @@
 <script setup>
 import { ref, onMounted } from "vue";
 import { ShoppingCart, Sun, Moon } from "lucide-vue-next";
-import CartDrawer from "@/Components/CartDrawer.vue";
+import CartDrawer from "@/components/CartDrawer.vue";
 import { useCartStore } from "@/Stores/cart";
 import Breadcrumbs from '@/components/Breadcrumbs.vue';
 

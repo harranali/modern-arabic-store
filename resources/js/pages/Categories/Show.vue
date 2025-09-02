@@ -2,7 +2,7 @@
 import { ref } from "vue";
 import { motion } from "motion-v";
 import { ShoppingCart, Loader2 } from "lucide-vue-next";
-import CartDrawer from "@/Components/CartDrawer.vue";
+import CartDrawer from "@/components/CartDrawer.vue";
 import { useCartStore } from "@/Stores/cart";
 import MainLayout from '@/layouts/MainLayout.vue';
 import { useToast } from "vue-toastification";
