@@ -16,26 +16,34 @@ RUN apt-get update && apt-get install -y \
 # Set working directory
 WORKDIR /var/www/html
 
-# Copy all app files first
+# Copy all app files
 COPY . .
+
+# Copy example env and generate APP_KEY for build
+RUN cp .env.example .env && php artisan key:generate
 
 # Install Composer
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 
-# Install PHP dependencies (skip scripts to avoid artisan errors)
+# Install PHP dependencies (skip scripts initially to avoid artisan errors)
 RUN composer install --no-dev --optimize-autoloader --no-scripts
 
-# Run post-install scripts now that artisan exists
+# Run post-autoload scripts now that artisan exists
 RUN composer run-script post-autoload-dump
 
-# Install Node dependencies and build frontend
+# Install Node dependencies
 RUN npm install
+
+# Set environment variable to skip Wayfinder type generation
+ENV WAYFINDER_SKIP_GENERATE=true
+
+# Build frontend assets
 RUN npm run build
 
-# Set permissions
+# Set permissions for Laravel
 RUN chown -R www-data:www-data /var/www/html/storage /var/www/html/bootstrap/cache
 
-# Expose port
+# Expose port for PHP-FPM
 EXPOSE 9000
 
 # Start PHP-FPM
