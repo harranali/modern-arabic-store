@@ -29,12 +29,12 @@ fi
 php artisan migrate --force
 php artisan db:seed --force
 
+# Final ownership (just in case)
+chown -R www-data:www-data storage bootstrap/cache
+
 # Install Node dependencies and build frontend
 npm install
 npm run build
-
-# Final ownership (just in case)
-chown -R www-data:www-data storage bootstrap/cache
 
 # Determine port (Render sets $PORT, default to 8000 locally)
 PORT=${PORT:-8000}
