@@ -8,7 +8,7 @@ use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\PageController;
 
-Route::get('/', [ProductController::class, 'index'])->name('products.index');
+Route::get('/', [ProductController::class, 'index'])->name('home');
 Route::get('/products/{slug}', [ProductController::class, 'show'])->name('products.show');
 Route::get('/categories', [CategoryController::class, 'index'])->name('categories.index');
 Route::get('/categories/{slug}', [CategoryController::class, 'show'])->name('categories.show');
@@ -27,6 +27,10 @@ Route::post('/cart/clear', [CartController::class, 'clear'])->name('cart.clear')
 Route::get('/checkout', [CheckoutController::class, 'index'])->name('checkout.index');
 Route::post('/checkout', [CheckoutController::class, 'process'])->name('checkout.process');
 Route::get('/checkout/confirm', [CheckoutController::class, 'confirm'])->name('checkout.confirm');
+
+Route::get('dashboard', function () {
+    return Inertia::render('Dashboard');
+})->middleware(['auth', 'verified'])->name('dashboard');
 
 require __DIR__.'/settings.php';
 require __DIR__.'/auth.php';
