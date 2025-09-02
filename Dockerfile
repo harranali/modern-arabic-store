@@ -32,10 +32,10 @@ RUN composer install --no-dev --optimize-autoloader --no-scripts
 RUN composer run-script post-autoload-dump
 
 # run migrations 
-RUN artisan migrate
+RUN php artisan migrate
 
 # seed database 
-RUN artisan db:seed
+RUN php artisan db:seed
 
 # Install Node dependencies
 RUN npm install
