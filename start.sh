@@ -12,6 +12,9 @@ fi
 chown -R www-data:www-data storage bootstrap/cache
 chmod -R 775 storage bootstrap/cache
 
+# list env files
+ls -la .env*
+
 # Generate APP_KEY if missing
 if ! grep -q 'APP_KEY=' .env || [ -z "$(grep 'APP_KEY=' .env | cut -d'=' -f2)" ]; then
     php artisan key:generate --ansi
