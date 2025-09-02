@@ -4,10 +4,18 @@ set -e
 echo "Setting up Laravel environment..."
 
 # Copy example env if .env doesn't exist
-cp .env.example .env
+if [ ! -f .env ]; then
+    cp .env.example .env
+fi
 
-# Generate APP_KEY
-php artisan key:generate --ansi
+# Set permissions early
+chown -R www-data:www-data storage bootstrap/cache
+chmod -R 775 storage bootstrap/cache
+
+# Generate APP_KEY if missing
+if ! grep -q 'APP_KEY=' .env || [ -z "$(grep 'APP_KEY=' .env | cut -d'=' -f2)" ]; then
+    php artisan key:generate --ansi
+fi
 
 # Run migrations and seed database
 php artisan migrate --force
@@ -17,7 +25,7 @@ php artisan db:seed --force
 npm install
 npm run build
 
-# Set permissions
+# Final ownership (just in case)
 chown -R www-data:www-data storage bootstrap/cache
 
 # Determine port (Render sets $PORT, default to 8000 locally)
