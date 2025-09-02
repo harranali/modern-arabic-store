@@ -24,10 +24,12 @@ COPY composer.json composer.lock ./
 
 # Install PHP dependencies
 RUN composer install --optimize-autoloader --no-scripts
-RUN composer run-script post-autoload-dump
 
 # Copy all app files
 COPY . .
+
+# run post scrits
+RUN composer run-script post-autoload-dump
 
 # Install Node dependencies and build frontend
 RUN npm install
