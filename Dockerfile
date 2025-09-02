@@ -37,11 +37,12 @@ RUN chown -R www-data:www-data bootstrap/cache storage
 # run post scrits
 RUN composer run-script post-autoload-dump
 
+RUN php artisan config:clear
+RUN php artisan route:clear
+RUN php artisan view:clear
+
 # Install Node dependencies and build frontend
 RUN npm install
-
-RUN php artisan wayfinder:generate --with-form
-
 RUN npm run build
 
 # set script permission
