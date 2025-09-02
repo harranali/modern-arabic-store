@@ -31,13 +31,6 @@ COPY . .
 # run post scrits
 RUN composer run-script post-autoload-dump
 
-# Disable Wayfinder during build
-ENV WAYFINDER_SKIP_GENERATE=true
-
-# Install Node dependencies and build frontend
-RUN npm install
-RUN npm run build
-
 # set script permission
 RUN chmod +x start.sh
 

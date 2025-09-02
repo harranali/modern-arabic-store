@@ -15,6 +15,10 @@ php artisan key:generate --ansi
 php artisan migrate --force
 php artisan db:seed --force
 
+# Install Node dependencies and build frontend
+npm install
+npm run build
+
 # Set permissions
 chown -R www-data:www-data storage bootstrap/cache
 
