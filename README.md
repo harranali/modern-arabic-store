@@ -27,6 +27,27 @@ A modern Arabic ecommerce store showcasing products with a shopping cart, simula
 
 ---
 
+## 📸 Screenshots
+
+### Homepage
+
+![Homepage](./screenshots/home-1.png)
+![Homepage](./screenshots/home-2.png)
+
+### Product Page
+
+![Product Page](./screenshots/product-details-1.png)
+
+### Cart Drawer
+
+![Cart Drawer](./screenshots/cart-1.png)
+
+### Category Page
+
+![Category Page](./screenshots/category-1.png)
+
+---
+
 ## 🖼 Pages Included
 
 - **Homepage:** Product listing, Hero section, Filters
