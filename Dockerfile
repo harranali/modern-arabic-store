@@ -19,8 +19,8 @@ WORKDIR /var/www/html
 # Copy all app files
 COPY . .
 
-# Copy example env and generate APP_KEY for build
-RUN cp .env.example .env && php artisan key:generate
+# Copy example env
+RUN cp .env.example .env
 
 # Install Composer
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
@@ -30,6 +30,12 @@ RUN composer install --no-dev --optimize-autoloader --no-scripts
 
 # Run post-autoload scripts now that artisan exists
 RUN composer run-script post-autoload-dump
+
+# run migrations 
+RUN artisan migrate
+
+# seed database 
+RUN artisan db:seed
 
 # Install Node dependencies
 RUN npm install
