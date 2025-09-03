@@ -23,12 +23,11 @@ const props = defineProps({
 const filters = ref({
     category: props.filters.category ?? '',
     sortBy: props.filters.sort_by || '',
-    q: props.filters.q || '',
 })
 
 // Apply filters via Inertia
 function applyFilters() {
-    router.get('/products', { q: filters.value.q, category: filters.value.category, sort_by: filters.value.sortBy }, { preserveState: true, replace: true, preserveScroll: true })
+    router.get('/', { category: filters.value.category, sort_by: filters.value.sortBy }, { preserveState: true, replace: true, preserveScroll: true })
 }
 
 // Add to cart
@@ -43,37 +42,57 @@ async function addToCart(product) {
         loadingIds.value = loadingIds.value.filter(id => id !== product.id)
     }
 }
-
-const breadcrumbs = [
-    {
-        title: 'الرئيسية',
-        href: '/'
-    },
-    {
-        title: 'المنتجات',
-        href: ``
-    }
-];
-
 </script>
 
 <template>
-    <MainLayout :breadcrumbs="breadcrumbs">
+    <MainLayout>
         <div class="-mt-12 min-h-screen bg-gray-50 text-gray-900">
             <!-- Hero -->
-            <!-- Hero -->
-            <section
-                class="relative overflow-hidden bg-gradient-to-br from-primary/30 via-white to-primary/10 py-20 text-center">
-                <Motion :initial="{ opacity: 0, y: 30 }" :animate="{ opacity: 1, y: 0 }"
-                    :transition="{ duration: 0.8 }">
-                    <h1
-                        class="text-4xl md:text-5xl lg:text-6xl font-extrabold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-primary to-blue-600">
-                        تصفح المنتجات
-                    </h1>
-                </Motion>
-                <p class="text-lg text-gray-600">
-                    اكتشف منتجاتنا المميزة
-                </p>
+            <section class="relative overflow-hidden bg-gradient-to-br from-primary/30 via-white to-primary/10">
+                <div class="absolute inset-0 -z-10">
+                    <div class="absolute -top-32 -left-32 w-96 h-96 bg-primary/20 rounded-full blur-3xl animate-pulse">
+                    </div>
+                    <div
+                        class="absolute bottom-0 right-0 w-80 h-80 bg-blue-300/30 rounded-full blur-2xl animate-bounce">
+                    </div>
+                </div>
+
+                <div class="max-w-7xl mx-auto px-6 lg:px-12 py-20 grid md:grid-cols-2 items-center gap-10">
+                    <Motion :initial="{ opacity: 0, x: -50 }" :animate="{ opacity: 1, x: 0 }"
+                        :transition="{ duration: 0.8 }" class="text-center md:text-right space-y-6">
+                        <h1
+                            class="text-4xl md:text-5xl lg:text-6xl font-extrabold leading-tight bg-clip-text text-transparent bg-gradient-to-r from-primary to-blue-600">
+                            اكتشف أحدث المنتجات
+                            <br />
+                            بجودة ✨ وأسعار لا تقاوم
+                        </h1>
+
+                        <p class="text-lg md:text-xl text-gray-600">
+                            تسوق الآن وتمتع بتجربة عصرية وسهلة مع أفضل العروض.
+                        </p>
+
+                        <div class="flex justify-center md:justify-start gap-4">
+                            <Button as="a" href="/products"
+                                class="px-6 py-3 bg-primary text-white rounded-full shadow-lg hover:shadow-xl hover:bg-primary/90 transition transform hover:scale-105">
+                                تسوق الآن
+                            </Button>
+                            <Button as="a" href="/categories"
+                                class="px-6 py-3 bg-white/70 backdrop-blur-md text-primary border border-primary rounded-full shadow-md hover:bg-white transition">
+                                تصفح الفئات
+                            </Button>
+                        </div>
+                    </Motion>
+
+                    <Motion :initial="{ opacity: 0, y: 40 }" :animate="{ opacity: 1, y: 0 }"
+                        :transition="{ duration: 1 }" class="relative">
+                        <img src="/products/phone-2.jpg" alt="منتجات مميزة"
+                            class=" max-w-md mx-auto h-99 drop-shadow-2xl rounded-2xl" />
+                        <div
+                            class="absolute -bottom-6 -left-6 bg-white/40 backdrop-blur-xl px-6 py-3 rounded-2xl shadow-lg">
+                            ⭐ آلاف العملاء يثقون بنا
+                        </div>
+                    </Motion>
+                </div>
             </section>
 
             <!-- Filters -->

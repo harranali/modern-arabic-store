@@ -1,9 +1,10 @@
 <script setup>
 import { ref, onMounted } from "vue";
-import { ShoppingCart, Sun, Moon } from "lucide-vue-next";
+import { ShoppingCart, Sun, Moon, Facebook, Twitter, Instagram } from "lucide-vue-next";
 import CartDrawer from "@/components/CartDrawer.vue";
 import { useCartStore } from "@/Stores/cart";
 import Breadcrumbs from '@/components/Breadcrumbs.vue';
+import { router } from '@inertiajs/vue3'
 
 const search = ref("");
 const darkMode = ref(false);
@@ -11,7 +12,7 @@ const cart = useCartStore();
 
 function applySearch() {
     if (search.value.trim()) {
-        window.location.href = `/?q=${search.value}`;
+        router.get('/products', { q: search.value }, { preserveState: true, replace: true })
     }
 }
 
@@ -58,7 +59,7 @@ const props = defineProps({
                 </a>
 
                 <!-- Search -->
-                <div class="flex-1 mx-6 hidden md:block">
+                <div class="flex-1 mx-6 block">
                     <input v-model="search" @keyup.enter="applySearch" type="text" placeholder="ابحث عن منتج..."
                         class="w-full rounded-full px-4 py-2 border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 focus:ring-2 focus:ring-primary focus:outline-none transition-colors" />
                 </div>
@@ -121,9 +122,15 @@ const props = defineProps({
                 <div>
                     <h4 class="font-bold text-lg mb-3">تابعنا</h4>
                     <div class="flex gap-4">
-                        <a href="#" class="hover:text-primary"><i class="fa-brands fa-facebook"></i></a>
-                        <a href="#" class="hover:text-primary"><i class="fa-brands fa-instagram"></i></a>
-                        <a href="#" class="hover:text-primary"><i class="fa-brands fa-x-twitter"></i></a>
+                        <a href="#" class="hover:text-primary">
+                            <Facebook />
+                        </a>
+                        <a href="#" class="hover:text-primary">
+                            <Twitter />
+                        </a>
+                        <a href="#" class="hover:text-primary">
+                            <Instagram />
+                        </a>
                     </div>
                 </div>
             </div>
