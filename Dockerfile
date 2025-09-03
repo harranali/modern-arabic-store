@@ -38,9 +38,14 @@ RUN chown -R www-data:www-data bootstrap/cache storage
 RUN composer run-script post-autoload-dump
 RUN php artisan migrate --force
 RUN php artisan db:seed --force
-RUN php artisan config:clear
+
 RUN php artisan route:clear
 RUN php artisan view:clear
+RUN php artisan config:clear
+RUN php artisan cache:clear
+RUN php artisan event:clear
+RUN php artisan clear-compiled
+
 
 # Install Node dependencies and build frontend
 RUN npm install
