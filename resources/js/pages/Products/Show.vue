@@ -75,7 +75,7 @@ const breadcrumbs = [
 
                 <!-- Product Gallery -->
                 <motion.div :initial="{ opacity: 0, x: -20 }" :animate="{ opacity: 1, x: 0 }" class="relative w-full">
-                    <img :src="'/' + props.product.images[currentImage]" alt=""
+                    <img :src="`/images/${props.product.images[currentImage]}`" alt=""
                         class="w-full h-[400px] object-cover rounded-2xl shadow-md" />
 
                     <!-- Arrows -->
@@ -90,7 +90,7 @@ const breadcrumbs = [
 
                     <!-- Thumbnails -->
                     <div class="flex gap-2 mt-4 overflow-x-auto">
-                        <img v-for="(img, index) in props.product.images" :key="index" :src="'/' + img"
+                        <img v-for="(img, index) in props.product.images" :key="index" :src="`/images/${img}`"
                             @click="currentImage = index"
                             :class="['w-20 h-20 object-cover rounded-lg cursor-pointer border-2', index === currentImage ? 'border-primary' : 'border-transparent']" />
                     </div>
@@ -134,7 +134,7 @@ const breadcrumbs = [
                         :animate="{ opacity: 1, y: 0 }" :whileHover="{ scale: 1.03 }"
                         class="bg-white rounded-2xl shadow-md hover:shadow-xl transition overflow-hidden group relative">
                         <Link :href="`/products/${p.slug}`">
-                        <img :src="'/' + p.image" alt=""
+                        <img :src="`/images/${p.image}`" alt=""
                             class="w-full h-48 object-cover group-hover:scale-105 transition duration-300" />
                         </Link>
                         <div class="p-4">

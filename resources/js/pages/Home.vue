@@ -85,7 +85,7 @@ async function addToCart(product) {
 
                     <Motion :initial="{ opacity: 0, y: 40 }" :animate="{ opacity: 1, y: 0 }"
                         :transition="{ duration: 1 }" class="relative">
-                        <img src="/products/phone-2.jpg" alt="منتجات مميزة"
+                        <img src="/images/products/phone-2.jpg" alt="منتجات مميزة"
                             class=" max-w-md mx-auto h-99 drop-shadow-2xl rounded-2xl" />
                         <div
                             class="absolute -bottom-6 -left-6 bg-white/40 backdrop-blur-xl px-6 py-3 rounded-2xl shadow-lg">
@@ -119,7 +119,7 @@ async function addToCart(product) {
                         class="bg-white rounded-2xl shadow-md hover:shadow-xl transition overflow-hidden group relative">
                         <div class="overflow-hidden rounded-t-2xl">
                             <Link :href="`/products/${p.slug}`">
-                            <img :src="p.image" :alt="p.name"
+                            <img :src="`/images/${p.image}`" :alt="p.name"
                                 class="w-full h-48 object-cover group-hover:scale-105 transition duration-300" />
                             </Link>
                         </div>

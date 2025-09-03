@@ -73,7 +73,7 @@ onMounted(() => {
             </div>
             <div v-for="item in cart.items" :key="item.id"
                 class="flex items-center gap-3 bg-gray-50 dark:bg-gray-800 rounded-lg p-3">
-                <img :src="'/' + item.image" class="w-16 h-16 object-cover rounded-lg" />
+                <img :src="`/images/${item.image}`" class="w-16 h-16 object-cover rounded-lg" />
                 <div class="flex-1">
                     <div class="font-semibold">{{ item.name }}</div>
                     <div class="text-sm text-gray-600 dark:text-gray-400 flex items-center gap-2">

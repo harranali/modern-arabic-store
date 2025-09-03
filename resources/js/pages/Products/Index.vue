@@ -100,7 +100,7 @@ const breadcrumbs = [
                         class="bg-white rounded-2xl shadow-md hover:shadow-xl transition overflow-hidden group relative">
                         <div class="overflow-hidden rounded-t-2xl">
                             <Link :href="`/products/${p.slug}`">
-                            <img :src="p.image" :alt="p.name"
+                            <img :src="`/images/${p.image}`" :alt="p.name"
                                 class="w-full h-48 object-cover group-hover:scale-105 transition duration-300" />
                             </Link>
                         </div>

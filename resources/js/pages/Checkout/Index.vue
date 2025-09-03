@@ -85,7 +85,7 @@ const brandColors = {
                         animate="{ opacity: 1, y: 0 }"
                         class="flex items-center gap-4 bg-white rounded-xl p-4 shadow-sm hover:shadow-md transition">
 
-                        <img :src="'/' + item.image" class="w-24 h-24 object-cover rounded-lg" />
+                        <img :src="`/images/${item.image}`" class="w-24 h-24 object-cover rounded-lg" />
 
                         <div class="flex-1">
                             <div class="font-semibold">{{ item.name }}</div>
@@ -134,7 +134,7 @@ const brandColors = {
                             <div v-for="item in cart.items" :key="item.id"
                                 class="flex items-center justify-between gap-2">
                                 <div class="flex items-center gap-2">
-                                    <img :src="'/' + item.image" alt="thumbnail"
+                                    <img :src="`/images/${item.image}`" alt="thumbnail"
                                         class="w-11 h-12 object-cover rounded-lg" />
                                     <div class="flex flex-col">
                                         <span class="font-semibold text-gray-800">{{ item.name }}</span>
