@@ -27,6 +27,15 @@ A modern Arabic ecommerce store showcasing products with a shopping cart, simula
 
 ---
 
+## 🚀 Demo
+
+You can check out the live demo here:  
+👉 [Live Demo](https://modern-arabic-store-demo.onrender.com)
+
+> ⚠️ Demo uses mock data and a simulated checkout flow for presentation purposes only.
+
+---
+
 ## 📸 Screenshots
 
 ### Homepage
