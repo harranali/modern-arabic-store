@@ -22,10 +22,6 @@ if ! grep -q 'APP_KEY=' .env || [ -z "$(grep 'APP_KEY=' .env | cut -d'=' -f2)" ]
     php artisan key:generate --ansi
 fi
 
-# Run migrations and seed database
-php artisan migrate --force
-php artisan db:seed --force
-
 # Final ownership (just in case)
 chown -R www-data:www-data storage bootstrap/cache
 
